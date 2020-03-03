@@ -7,9 +7,9 @@
 <title>My Account List</title>
 </head>
 <body>
-<h1>${accountList.name }님 환영합니다^^</h1>
+<h1>${sessionScope.user.id }님 환영합니다^^</h1>
 <button type="button" onclick="location.href='createAccount.jsp'">신규발급</button>
-<button type="button" onclick="location.href='logout.jsp'">로그아웃</button>
+<button type="button" onclick="location.href='/logout.do'">로그아웃</button>
 <table border='1'>
 <thead>
 <tr>
@@ -17,11 +17,12 @@
 </tr>
 </thead>
 <tbody>
-<c:forEach var="accountList" items="${accountList }">
+<c:forEach var="accountList"  items="${accountList }">
+<c:url var="accInfo" value="/AccInfo.do"><c:param name="accNo" value="${accountList.accNo }"/></c:url>
 <tr>
 <td>${accountList.type }</td>
-<td>${accountList.accNo }</td>
-<td>${accountList.amount }</td>
+<td><a href="${accInfo}">${accountList.accNo }</a></td>
+<td>${accountList.amount }원</td>
 </tr>
 </c:forEach>
 </tbody>

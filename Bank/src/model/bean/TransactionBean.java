@@ -2,18 +2,34 @@ package model.bean;
 
 import java.sql.Date;
 
-/**
- * DB의 transaction 테이블의 정보를 가져다쓰기위해 만드는 bean 클래스입니다.
- */
 public class TransactionBean {
-	
+	private String transNo;
+	private String userNo;
+	private String accNo;
+	private int amount;
+	private Date date;
+	private int deposit;
+	private int withdraw;
+	private String type;
+
 	@Override
 	public String toString() {
 		return "TransactionBean [transNo=" + transNo + ", userNo=" + userNo + ", accNo=" + accNo + ", amount=" + amount
 				+ ", date=" + date + ", deposit=" + deposit + ", withdraw=" + withdraw + ", type=" + type + "]";
 	}
-
-
+    public TransactionBean() {
+		// TODO Auto-generated constructor stub
+	}
+	public TransactionBean(String type, String accNo, Date date, int deposit, int amount, int withdraw) {
+		super();
+		this.type = type;
+		this.accNo = accNo;
+		this.date = date;
+		this.deposit = deposit;
+		this.amount = amount;
+		this.withdraw = withdraw;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -28,7 +44,6 @@ public class TransactionBean {
 		result = prime * result + withdraw;
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -73,104 +88,69 @@ public class TransactionBean {
 		return true;
 	}
 
-
 	public String getTransNo() {
 		return transNo;
 	}
-
 
 	public void setTransNo(String transNo) {
 		this.transNo = transNo;
 	}
 
-
 	public String getUserNo() {
 		return userNo;
 	}
-
 
 	public void setUserNo(String userNo) {
 		this.userNo = userNo;
 	}
 
-
 	public String getAccNo() {
 		return accNo;
 	}
-
 
 	public void setAccNo(String accNo) {
 		this.accNo = accNo;
 	}
 
-
 	public int getAmount() {
 		return amount;
 	}
-
 
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
-
 	public Date getDate() {
 		return date;
 	}
-
 
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
-
 	public int getDeposit() {
 		return deposit;
 	}
-
 
 	public void setDeposit(int deposit) {
 		this.deposit = deposit;
 	}
 
-
 	public int getWithdraw() {
 		return withdraw;
 	}
-
 
 	public void setWithdraw(int withdraw) {
 		this.withdraw = withdraw;
 	}
 
-
 	public String getType() {
 		return type;
 	}
-
 
 	public void setType(String type) {
 		this.type = type;
 	}
 
-
-	private String transNo;
-	private String userNo;
-	private String accNo;
-	private int amount;
-	private Date date;
-	private int deposit;
-	private int withdraw;
-	private String type;
 	
-
-	public TransactionBean(String type,String accNo, Date date,  int deposit, int amount, int withdraw) {
-		super();
-		this.type = type;
-		this.accNo = accNo;
-		this.date = date;
-		this.deposit = deposit;
-		this.amount = amount;
-		this.withdraw = withdraw;
-	}
 }

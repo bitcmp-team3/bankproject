@@ -12,34 +12,46 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import model.bean.AccountBean;
 
 public class AccountListDAO {
 	private PreparedStatement stmt;
 	private Connection conn=ConnectionDAO.getInstance().getConn();
+	ResultSet rs;
 	
 	public AccountListDAO() {//디폴트생성자
 		
 	}
-	
-	public List<AccountBean> accountList(HttpServletRequest request){
-		ResultSet rs=null;
-		List<AccountBean> accountInfo=null;
+	public int loginProcess(String id, String pw) {
+		String sql=" select * from user where id=? and pw=? ";
+		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			stmt.setString(2, pw);
+			rs=stmt.executeQuery();
+			if(rs.next()) {
+				return 1; 
+			} 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	public List<AccountBean> accountList(String id){
+		String sql=" select u.userNo, a.type, a.accNo, a.amount from user u, account a "
+				+ "  where u.id=? and u.userNo=a.userNo  ";
+		List<AccountBean> accounts=null;
 		
 		try {
+			stmt=conn.prepareStatement(sql);
+			stmt.setString(1, id);
 			rs=stmt.executeQuery();
 			
-			if(rs.next()) {//입력한 id와 pw가 DB의 id, pw와 일치하는게 있다면   
-			accountInfo=new ArrayList<AccountBean>();
-			while(rs.next()) {//accounts에 가져온 정보를 저장하고
-				AccountBean account=new AccountBean(rs.getString("joinType"), rs.getString("dealList"), rs.getInt("money"));
-				accountInfo.add(account);
-			}//login 값을 true로 저장
-			request.setAttribute("login", true);
-			} else {//없다면 login 값을 false로 저장
-				request.setAttribute("login", false);
+			accounts=new ArrayList<AccountBean>();
+			while(rs.next()) {
+				AccountBean account=new AccountBean(rs.getString("userNo"), rs.getString("accNo"), rs.getInt("amount"), rs.getString("type"));
+				accounts.add(account);
 			}
 			
 		} catch (SQLException e) {
@@ -53,7 +65,7 @@ public class AccountListDAO {
 				e.printStackTrace();
 			}
 		}
-		return accountInfo;
+		return accounts;
 	}
 	@Override
 	protected void finalize() throws Throwable {

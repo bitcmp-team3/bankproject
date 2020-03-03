@@ -8,6 +8,9 @@ public class AccountBean {
 	private int amount;
 	private String type;
 	
+	public AccountBean() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getUserNo() {
 		return userNo;
 	}
@@ -33,12 +36,12 @@ public class AccountBean {
 		this.type = type;
 	}
 	
-	public AccountBean(String type,String accNo, int amount) {
+	public AccountBean(String userNo,String accNo, int amount,String type) {
 		super();
-		this.type = type;
+		this.userNo= userNo;
 		this.accNo = accNo;
 		this.amount = amount;
-		
+		this.type = type;
 	}
 	@Override
 	public String toString() {

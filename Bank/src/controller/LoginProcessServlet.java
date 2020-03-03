@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.bean.UserBean;
 import model.dao.AccountListDAO;
 
 /**
@@ -20,19 +21,27 @@ public class LoginProcessServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AccountListDAO dao = new AccountListDAO();
 		HttpSession session = null;
-
-		if (request.getAttribute("login").equals(true)) {//login값이 true면 세션가져오기
+		String id=request.getParameter("id").trim();
+		String pw=request.getParameter("pw").trim();
+		AccountListDAO dao=new AccountListDAO();
+		
+		int login=dao.loginProcess(id,pw);
+		
+		if (login==1) {
+			UserBean user=new UserBean();
+			user.setId(id);
+			
 			session = request.getSession();
 			if (!session.isNew()) {
 				session.invalidate();
 				session = request.getSession(true);
 			}
 			session.setMaxInactiveInterval(3*60);
-			session.setAttribute("accountList", dao.accountList(request)); //session에 정보 저장
+			session.setAttribute("user", user); 
+			request.setAttribute("accountList", dao.accountList(id));
 			request.getRequestDispatcher("/accountList").forward(request, response);
-		} else {//login값이 false면
+		} else {
 			response.sendRedirect("/loginFail");
 		}
 	}

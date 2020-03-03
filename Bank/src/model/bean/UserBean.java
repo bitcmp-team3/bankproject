@@ -3,13 +3,11 @@ package model.bean;
  * DB의 user 테이블의 정보를 가져다쓰기위해 만드는 bean 클래스입니다.
  */
 
-import java.sql.Date;
-
 public class UserBean {
 	private String id;
 	private String pw;
 	private String name;
-	private Date birthday;
+	private String birthday;
 	private String phoneNo;
 	private String addr;
 	private String userNo;
@@ -32,10 +30,10 @@ public class UserBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getPhoneNo() {
