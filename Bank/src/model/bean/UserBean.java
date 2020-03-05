@@ -12,6 +12,9 @@ public class UserBean {
 	private String addr;
 	private String userNo;
 	
+	public UserBean() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getId() {
 		return id;
 	}

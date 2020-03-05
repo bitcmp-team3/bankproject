@@ -11,6 +11,16 @@
   </welcome-file-list>
   <servlet>
     <description></description>
+    <display-name>AccountListProcessServlet</display-name>
+    <servlet-name>AccountListProcessServlet</servlet-name>
+    <servlet-class>controller.AccountListProcessServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountListProcessServlet</servlet-name>
+    <url-pattern>/accountlist.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>LoginProcessServlet</display-name>
     <servlet-name>LoginProcessServlet</servlet-name>
     <servlet-class>controller.LoginProcessServlet</servlet-class>
@@ -41,13 +51,23 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>AccInfoProcessServlet</display-name>
-    <servlet-name>AccInfoProcessServlet</servlet-name>
-    <servlet-class>controller.AccInfoProcessServlet</servlet-class>
+    <display-name>TransactionProcessServlet</display-name>
+    <servlet-name>TransactionProcessServlet</servlet-name>
+    <servlet-class>controller.TransactionProcessServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AccInfoProcessServlet</servlet-name>
-    <url-pattern>/AccInfo.do</url-pattern>
+    <servlet-name>TransactionProcessServlet</servlet-name>
+    <url-pattern>/transaction.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteProcessServlet</display-name>
+    <servlet-name>DeleteProcessServlet</servlet-name>
+    <servlet-class>controller.DeleteProcessServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteProcessServlet</servlet-name>
+    <url-pattern>/DeleteProcess.do</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>accountList</servlet-name>
@@ -58,12 +78,12 @@
     <url-pattern>/accountList</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>deleteComplete</servlet-name>
-    <jsp-file>/WEB-INF/view/info/deleteComplete.jsp</jsp-file>
+    <servlet-name>transaction</servlet-name>
+    <jsp-file>/WEB-INF/view/account/transaction.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>deleteComplete</servlet-name>
-    <url-pattern>/deleteComplete</url-pattern>
+    <servlet-name>transaction</servlet-name>
+    <url-pattern>/transaction</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>login</servlet-name>
@@ -82,8 +102,16 @@
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>mypage</servlet-name>
+    <jsp-file>/WEB-INF/view/login/mypage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mypage</servlet-name>
+    <url-pattern>/mypage</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>loginFail</servlet-name>
-    <jsp-file>/WEB-INF/view/loginFail.jsp</jsp-file>
+    <jsp-file>/WEB-INF/view/login/loginFail.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>loginFail</servlet-name>
@@ -105,14 +133,7 @@
     <servlet-name>회원가입성공</servlet-name>
     <url-pattern>/signupSuccess.jsp</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>info</servlet-name>
-    <jsp-file>/WEB-INF/view/info/info.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>info</servlet-name>
-    <url-pattern>/info</url-pattern>
-  </servlet-mapping>
+  
   <servlet>
     <servlet-name>delete</servlet-name>
     <jsp-file>/WEB-INF/view/info/delete.jsp</jsp-file>
@@ -122,33 +143,12 @@
     <url-pattern>/delete</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
-    <display-name>DeleteBean</display-name>
-    <servlet-name>DeleteBean</servlet-name>
-    <servlet-class>model.bean.DeleteBean</servlet-class>
+    <servlet-name>deleteComplete</servlet-name>
+    <jsp-file>/WEB-INF/view/info/deleteComplete.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DeleteBean</servlet-name>
-    <url-pattern>/DeleteBean</url-pattern>
+    <servlet-name>deleteComplete</servlet-name>
+    <url-pattern>/deleteComplete</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>DeleteProcessServlet</display-name>
-    <servlet-name>DeleteProcessServlet</servlet-name>
-    <servlet-class>controller.DeleteProcessServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteProcessServlet</servlet-name>
-    <url-pattern>/DeleteProcess.do</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>DeleteDAO</display-name>
-    <servlet-name>DeleteDAO</servlet-name>
-    <servlet-class>model.dao.DeleteDAO</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DeleteDAO</servlet-name>
-    <url-pattern>/DeleteDAO</url-pattern>
-  </servlet-mapping>
+  
 </web-app>

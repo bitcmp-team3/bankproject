@@ -23,8 +23,12 @@ public class DeleteDAO {
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, accNo);
-			rest = stmt.executeQuery();
-
+			delInfos = new AccountBean();
+//			rest = stmt.executeQuery();
+			if (rest.next()) {
+				delInfos.setType(rest.getString("type"));
+				delInfos.setAccNo(rest.getString("accNo"));
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

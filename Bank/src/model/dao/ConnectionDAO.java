@@ -19,7 +19,8 @@ public class ConnectionDAO {
 	private ConnectionDAO() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			conn=DriverManager.getConnection("jdbc:mysql://localhost/bank?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "1234");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost/bank?useUnicode=true&"
+					+ "useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "1234");
 			
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block

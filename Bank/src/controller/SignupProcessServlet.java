@@ -64,8 +64,18 @@ public class SignupProcessServlet extends HttpServlet {
 				stmt.setString(5, phoneNo);
 				stmt.setString(6, addr);
 				stmt.setString(7, userNo);
-				stmt.executeUpdate();
-				response.sendRedirect("/signupSuccess.jsp");
+				if(id =="" || pw=="" || name=="" || birthday=="" || phoneNo=="" || addr=="") {
+					response.setCharacterEncoding("UTF-8"); 
+					response.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<script>alert('회원가입 정보를 모두 입력해주세요'); location.href='/signup.jsp';</script>"); 
+					out.flush();
+				}
+				else {
+					stmt.executeUpdate();
+					response.sendRedirect("/signupSuccess.jsp");
+				}
+				
 			}
 			
 		} catch (SQLException e) {
@@ -75,6 +85,7 @@ public class SignupProcessServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 	}
 
